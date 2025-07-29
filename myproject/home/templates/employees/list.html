@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Employee List</h1>
+        <a href="{% url 'employee_create' %}" class="btn btn-primary btn-custom">Add Employee (Object Model)</a>
+        <a href="{% url 'employee_sp_create' %}" class="btn btn-secondary btn-custom">Add Employee (Stored Procedure)</a>
+        <table class="table table-striped table-hover table-custom mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Code</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>Job</th>
+                    <th>Birthday</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees %}
+                <tr>
+                    <td>{{ employee.employee_id }}</td>
+                    <td>{{ employee.employee_code }}</td>
+                    <td>{{ employee.employee_first_name }}</td>
+                    <td>{{ employee.employee_last_name }}</td>
+                    <td>{{ employee.gender }}</td>
+                    <td>{{ employee.department_code.department_name }}</td>
+                    <td>{{ employee.job_code.job_name }}</td>
+                    <td>{{ employee.birthday }}</td>
+                    <td>
+                        <a href="{% url 'employee_update' employee.employee_id %}" class="btn btn-info btn-sm btn-custom">Edit (OM)</a>
+                        <a href="{% url 'employee_sp_update' employee.employee_id %}" class="btn btn-info btn-sm btn-custom">Edit (SP)</a>
+                        <a href="{% url 'employee_delete' employee.employee_id %}" class="btn btn-danger btn-sm btn-custom">Delete (OM)</a>
+                        <a href="{% url 'employee_sp_delete' employee.employee_id %}" class="btn btn-danger btn-sm btn-custom">Delete (SP)</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Create Employee (Object Model)</h1>
+        {% if messages %}
+        <div class="alert alert-{{ message.tags }} mt-3" role="alert">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="employee_code" class="form-label">Employee Code</label>
+                <input type="text" name="employee_code" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="first_name" class="form-label">First Name</label>
+                <input type="text" name="first_name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="last_name" class="form-label">Last Name</label>
+                <input type="text" name="last_name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <input type="number" name="gender" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="department_code" class="form-label">Department</label>
+                <select name="department_code" class="form-select" required>
+                    {% for dept in departments %}
+                    <option value="{{ dept.department_code }}">{{ dept.department_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="job_code" class="form-label">Job</label>
+                <select name="job_code" class="form-select" required>
+                    {% for job in jobs %}
+                    <option value="{{ job.job_code }}">{{ job.job_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="birthday" class="form-label">Birthday</label>
+                <input type="date" name="birthday" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{% url 'employee_list' %}" class="btn btn-secondary">Back to List</a>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
