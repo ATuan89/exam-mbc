@@ -14,8 +14,8 @@ class Department(models.Model):
             if last_dept:
                 last_code = int(last_dept.department_code) + 1
             else:
-                last_code = 1
-            self.department_code = f'{last_code:04d}'
+                last_code = 1  # Start from 1, resulting in "0001"
+            self.department_code = f'{last_code:04d}'  # Format as four digits with leading zeros
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -35,8 +35,8 @@ class Job(models.Model):
             if last_job:
                 last_code = int(last_job.job_code) + 1
             else:
-                last_code = 1
-            self.job_code = f'{last_code:04d}'
+                last_code = 1  # Start from 1, resulting in "0001"
+            self.job_code = f'{last_code:04d}'  # Format as four digits with leading zeros
         super().save(*args, **kwargs)
 
     def __str__(self):
