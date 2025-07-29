@@ -90,7 +90,7 @@ Xác nhận SQL Server đang chạy.
 systemctl status mssql-server
 ```
 
-## 3. Cài đặt Django 5.1.6 trên môi trường ảo
+## 3. Cài đặt Django 2.1.15 trên môi trường ảo
 
 ### Bước 1: Cài đặt virtualenv
 
