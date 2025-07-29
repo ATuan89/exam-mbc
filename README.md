@@ -21,7 +21,7 @@ python manage.py migrate
 python manage.py collectstatic
 ```
 
-## 3. Khởi tạo Employee stored procedure
+## 3. Khởi tạo Employee stored procedure và data sample
 Truy cập [Link myproject/sql/employee.sql](myproject/sql/employee.sql)
 Chạy lệnh trên sqlserver 2017
 
